@@ -9,7 +9,7 @@ class BankAccount
 
   def deposit(amount)
     if amount > 0
-      # BUG 1: Deposit subtracts money from the balance → FIX: add the amount
+      # BUG 1: Deposit subtracts money from the balance : FIX: add the amount
       @balance += amount
       puts "  New balance: $#{"%.2f" % @balance}"
     else
@@ -18,7 +18,7 @@ class BankAccount
   end
 
   def withdraw(amount)
-    # BUG 2: Withdrawal allows overdrawing the account → FIX: only withdraw if sufficient funds exist
+    # BUG 2: Withdrawal allows overdrawing the account : FIX: only withdraw if sufficient funds exist
     if amount > @balance
       puts "  Error: Insufficient funds."
     else
@@ -26,17 +26,17 @@ class BankAccount
       puts "  New balance: $#{"%.2f" % @balance}"
     end
   end
-  # BUG 3: Missing `end` for the withdraw method → FIX: close the method before defining apply_interest
+  # BUG 3: Missing `end` for the withdraw method : FIX: close the method before defining apply_interest
 
   def apply_interest
-    # BUG 4: Interest calculation replaces balance with only the interest amount → FIX: add interest to the existing balance
+    # BUG 4: Interest calculation replaces balance with only the interest amount : FIX: add interest to the existing balance
     @balance = @balance * (1 + @rate)
     puts "  New balance: $#{"%.2f" % @balance}"
   end
 
   def display_info
     puts "Owner  : #{@owner}"
-    # BUG 5: Invalid string interpolation syntax → FIX: use #{@balance}
+    # BUG 5: Invalid string interpolation syntax : FIX: use #{@balance}
     puts "Balance: $#{"%.2f" % @balance}"
   end
 end
